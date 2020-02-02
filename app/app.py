@@ -7,26 +7,17 @@ from flask import request, url_for, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user, UserMixin	# helpful for login
 from werkzeug.security import generate_password_hash, check_password_hash	# helpful for login password
+from app import app, login_manager, db    # newly add
 
 
-prefix = 'sqlite:////'
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(app.root_path, 'data.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'dev'	# required for flash
-
-db = SQLAlchemy(app)
-login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
     user = User.query.get(int(user_id))  
     return user
 
-# not allow seeing some part of html without login
-login_manager.login_view = 'login'
-# login_manager.login_message = 'Your custom message'
+## remove some code
 
 
 # initialize the .db file in terminal, run by: flask initdb
