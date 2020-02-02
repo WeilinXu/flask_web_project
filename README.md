@@ -57,7 +57,4 @@ localhost:8000/
 ```
 
 # Reference
-``` 
-[This Link](https://zhuanlan.zhihu.com/p/51530577)
-
-```
+<https://zhuanlan.zhihu.com/p/51530577>
